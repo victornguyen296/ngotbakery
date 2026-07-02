@@ -4,7 +4,7 @@
    VD: "https://script.google.com/macros/s/xxxxx/exec"
    ============================================ */
 const SITE_CONFIG = {
-  APPS_SCRIPT_URL: ""
+  APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbxKNCYRyIUfvlbGl04QpDSpzmU1DG6LrdSQCWdUmGch7Zs98u9mGuqPsN2aOhjcHn4khw/exec"
 };
 
 /* Dữ liệu mẫu — hiển thị tạm khi chưa nối Google Sheet,
