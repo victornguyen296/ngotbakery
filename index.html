@@ -8,585 +8,26 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  /* ============================================
-     CONFIG — đổi tên thương hiệu / thông tin liên hệ tại đây
-     ============================================ */
-  :root {
-    --brand-name: "Ngọt";
-    --brand-tagline: "kể chuyện bằng bánh";
-  }
-
-  /* ---------- Design tokens ---------- */
-  :root {
-    --bg: #FBF6EF;           /* nền kem bơ ấm */
-    --bg-soft: #F3EADC;      /* nền phụ, panel */
-    --ink: #2B211D;          /* chữ chính */
-    --ink-soft: #6B5E54;     /* chữ phụ */
-    --wine: #6E2A3A;         /* accent chính — rượu vang / mứt dâu */
-    --pistachio: #8BA878;    /* accent phụ — pistachio trend */
-    --caramel: #C9974C;      /* accent phụ — caramel */
-    --paper: #FFFDF9;        /* thẻ / card */
-    --line: #E4D9C8;         /* viền mảnh */
-
-    --font-display: "Fraunces", serif;
-    --font-body: "Work Sans", sans-serif;
-    --font-mono: "JetBrains Mono", monospace;
-
-    --radius: 4px;
-    --container: 1120px;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    * { animation: none !important; transition: none !important; }
-  }
-
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  a { color: inherit; text-decoration: none; }
-  img { max-width: 100%; display: block; }
-
-  .wrap {
-    max-width: var(--container);
-    margin: 0 auto;
-    padding: 0 28px;
-  }
-
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--wine);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .eyebrow::before {
-    content: "";
-    width: 16px;
-    height: 1px;
-    background: var(--wine);
-    display: inline-block;
-  }
-
-  h1, h2, h3, h4 {
-    font-family: var(--font-display);
-    font-weight: 600;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-  }
-
-  /* ---------- Header ---------- */
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: rgba(251, 246, 239, 0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
-  }
-  .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 0;
-  }
-  .logo {
-    font-family: var(--font-display);
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--ink);
-  }
-  .logo span { color: var(--wine); }
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  .nav-links a {
-    position: relative;
-    padding: 4px 0;
-    color: var(--ink-soft);
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--wine); }
-  .nav-cta {
-    background: var(--wine);
-    color: var(--paper) !important;
-    padding: 10px 20px;
-    border-radius: var(--radius);
-    font-size: 14px;
-    font-weight: 600;
-  }
-  .nav-cta:hover { background: #5A2130; }
-  .menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-family: var(--font-mono);
-    font-size: 14px;
-    cursor: pointer;
-    color: var(--ink);
-  }
-
-  /* ---------- Hero ---------- */
-  .hero {
-    padding: 88px 0 64px;
-    position: relative;
-  }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 56px;
-    align-items: center;
-  }
-  .hero h1 {
-    font-size: clamp(40px, 5.5vw, 68px);
-    margin: 18px 0 22px;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--wine);
-  }
-  .hero p.lead {
-    font-size: 18px;
-    color: var(--ink-soft);
-    max-width: 460px;
-    margin-bottom: 32px;
-  }
-  .hero-ctas {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 24px;
-    border-radius: var(--radius);
-    font-size: 14px;
-    font-weight: 600;
-    font-family: var(--font-body);
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: all 0.2s;
-  }
-  .btn-primary {
-    background: var(--wine);
-    color: var(--paper);
-  }
-  .btn-primary:hover { background: #5A2130; transform: translateY(-1px); }
-  .btn-ghost {
-    background: transparent;
-    border-color: var(--ink);
-    color: var(--ink);
-  }
-  .btn-ghost:hover { background: var(--ink); color: var(--paper); }
-
-  /* Signature element: order-ticket visual in hero */
-  .ticket {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 28px 24px;
-    position: relative;
-    box-shadow: 0 24px 48px -24px rgba(43, 33, 29, 0.25);
-    transform: rotate(1.5deg);
-  }
-  .ticket::before, .ticket::after {
-    content: "";
-    position: absolute;
-    left: 0; right: 0;
-    height: 14px;
-    background:
-      radial-gradient(circle at 10px 7px, transparent 7px, var(--paper) 7.5px) repeat-x;
-    background-size: 20px 14px;
-  }
-  .ticket::before { top: -7px; }
-  .ticket::after { bottom: -7px; transform: rotate(180deg); }
-  .ticket-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    border-bottom: 1px dashed var(--line);
-    padding-bottom: 14px;
-    margin-bottom: 14px;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--ink-soft);
-  }
-  .ticket-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 9px 0;
-    font-size: 14px;
-    border-bottom: 1px dotted var(--line);
-  }
-  .ticket-row:last-of-type { border-bottom: none; }
-  .ticket-row .tag {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--pistachio);
-    background: rgba(139, 168, 120, 0.12);
-    padding: 2px 8px;
-    border-radius: 2px;
-    margin-left: 8px;
-  }
-  .ticket-total {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 1px dashed var(--line);
-    font-family: var(--font-mono);
-    font-weight: 500;
-  }
-
-  /* ---------- Section shell ---------- */
-  section { padding: 88px 0; }
-  .section-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 44px;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .section-head h2 { font-size: clamp(28px, 3.4vw, 40px); margin-top: 10px; }
-  .section-head .see-more {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 2px;
-    white-space: nowrap;
-  }
-
-  /* ---------- About ---------- */
-  .about {
-    background: var(--bg-soft);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-  .about-grid {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: 56px;
-    align-items: center;
-  }
-  .portrait {
-    aspect-ratio: 4/5;
-    border-radius: var(--radius);
-    background: linear-gradient(155deg, var(--wine) 0%, #8a3a4d 45%, var(--caramel) 100%);
-    position: relative;
-    overflow: hidden;
-  }
-  .portrait::after {
-    content: "ẢNH CHÂN DUNG";
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.75);
-  }
-  .about-copy p { color: var(--ink-soft); margin: 18px 0; max-width: 560px; }
-  .stat-row {
-    display: flex;
-    gap: 40px;
-    margin-top: 32px;
-    padding-top: 28px;
-    border-top: 1px solid var(--line);
-  }
-  .stat b {
-    display: block;
-    font-family: var(--font-display);
-    font-size: 30px;
-    color: var(--wine);
-  }
-  .stat span {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--ink-soft);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  /* ---------- Trend strip (ticker) ---------- */
-  .ticker-outer {
-    background: var(--ink);
-    color: var(--bg);
-    overflow: hidden;
-    padding: 14px 0;
-  }
-  .ticker-track {
-    display: flex;
-    gap: 48px;
-    white-space: nowrap;
-    animation: scroll-left 28s linear infinite;
-    width: max-content;
-  }
-  @keyframes scroll-left {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  .ticker-track span {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    letter-spacing: 0.04em;
-  }
-  .ticker-track span em {
-    color: var(--caramel);
-    font-style: normal;
-  }
-
-  /* ---------- Menu (product cards as tickets) ---------- */
-  .menu-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-  .item-card {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .item-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 32px -20px rgba(43,33,29,0.28);
-  }
-  .item-media {
-    aspect-ratio: 1/1;
-    position: relative;
-  }
-  .item-media::after {
-    content: attr(data-label);
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 12px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    color: rgba(255,255,255,0.85);
-  }
-  .item-body { padding: 16px; }
-  .item-body .k { font-family: var(--font-mono); font-size: 11px; color: var(--pistachio); text-transform: uppercase; }
-  .item-body h4 { font-size: 17px; margin: 6px 0 4px; }
-  .item-body p { font-size: 13px; color: var(--ink-soft); margin-bottom: 12px; }
-  .item-price {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: var(--font-mono);
-    font-size: 13px;
-    border-top: 1px dashed var(--line);
-    padding-top: 12px;
-  }
-  .item-price a { color: var(--wine); font-weight: 500; }
-
-  /* ---------- Blog grid ---------- */
-  .blog-grid {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr;
-    gap: 20px;
-  }
-  .post-card {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  .post-card.featured { grid-row: span 2; }
-  .post-media {
-    aspect-ratio: 16/10;
-    position: relative;
-  }
-  .post-card.featured .post-media { aspect-ratio: 4/3; }
-  .post-media::after {
-    content: attr(data-label);
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 12px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: rgba(255,255,255,0.85);
-  }
-  .post-body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
-  .post-date { font-family: var(--font-mono); font-size: 11px; color: var(--ink-soft); text-transform: uppercase; }
-  .post-body h3 { font-size: 19px; margin: 8px 0 8px; }
-  .post-card.featured .post-body h3 { font-size: 25px; }
-  .post-body p { font-size: 13.5px; color: var(--ink-soft); flex: 1; }
-  .post-body .read { font-family: var(--font-mono); font-size: 12px; margin-top: 14px; border-bottom: 1px solid var(--ink); align-self: flex-start; padding-bottom: 2px; }
-
-  /* ---------- Gallery ---------- */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows: 110px;
-    gap: 8px;
-  }
-  .g-item {
-    border-radius: 3px;
-    position: relative;
-    overflow: hidden;
-  }
-  .g-item::after {
-    content: "";
-    position: absolute; inset: 0;
-  }
-  .g-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-  .g-item:nth-child(4) { grid-column: span 2; grid-row: span 2; }
-  .g-item:nth-child(8) { grid-column: span 2; grid-row: span 2; }
-
-  /* ---------- Order / contact ---------- */
-  .order {
-    background: var(--ink);
-    color: var(--bg);
-    border-radius: var(--radius);
-    padding: 56px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-  }
-  .order .eyebrow { color: var(--caramel); }
-  .order .eyebrow::before { background: var(--caramel); }
-  .order h2 { color: var(--bg); font-size: clamp(26px, 3vw, 36px); margin: 14px 0 16px; }
-  .order p { color: #C9C0B4; margin-bottom: 24px; max-width: 440px; }
-  .order-channels { display: flex; flex-direction: column; gap: 10px; }
-  .channel {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 18px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: var(--radius);
-    font-size: 14px;
-    transition: background 0.2s;
-  }
-  .channel:hover { background: rgba(255,255,255,0.12); }
-  .channel .arrow { font-family: var(--font-mono); color: var(--caramel); }
-  .order-form-note {
-    font-family: var(--font-mono);
-    font-size: 11.5px;
-    color: #9A9184;
-    margin-top: 16px;
-    line-height: 1.6;
-  }
-
-  /* ---------- Newsletter ---------- */
-  .newsletter {
-    text-align: center;
-    padding: 72px 0;
-  }
-  .newsletter h2 { font-size: clamp(26px, 3vw, 34px); margin-bottom: 12px; }
-  .newsletter p { color: var(--ink-soft); margin-bottom: 28px; }
-  .subscribe-form {
-    display: flex;
-    max-width: 440px;
-    margin: 0 auto;
-    border: 1px solid var(--ink);
-    border-radius: var(--radius);
-    overflow: hidden;
-  }
-  .subscribe-form input {
-    flex: 1;
-    border: none;
-    background: transparent;
-    padding: 14px 16px;
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--ink);
-  }
-  .subscribe-form input:focus { outline: none; }
-  .subscribe-form button {
-    background: var(--ink);
-    color: var(--bg);
-    border: none;
-    padding: 0 22px;
-    font-family: var(--font-mono);
-    font-size: 13px;
-    cursor: pointer;
-  }
-
-  /* ---------- Footer ---------- */
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 44px 0;
-  }
-  .footer-grid {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  .footer-links { display: flex; gap: 24px; font-size: 13px; color: var(--ink-soft); }
-  .footer-links a:hover { color: var(--wine); }
-  .footer-note { font-family: var(--font-mono); font-size: 11px; color: var(--ink-soft); }
-
-  /* ---------- Responsive ---------- */
-  @media (max-width: 920px) {
-    .nav-links { display: none; }
-    .menu-toggle { display: block; }
-    .hero-grid { grid-template-columns: 1fr; }
-    .about-grid { grid-template-columns: 1fr; }
-    .menu-grid { grid-template-columns: repeat(2, 1fr); }
-    .blog-grid { grid-template-columns: 1fr; }
-    .post-card.featured { grid-row: auto; }
-    .gallery-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 90px; }
-    .order { grid-template-columns: 1fr; padding: 36px 24px; }
-  }
-</style>
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <header>
   <div class="wrap nav">
-    <a href="#top" class="logo">Ngọt<span>.</span></a>
+    <a href="index.html" class="logo">Ngọt<span>.</span></a>
     <nav class="nav-links">
-      <a href="#about">Về mình</a>
-      <a href="#trend">Đang hot</a>
-      <a href="#menu">Menu</a>
-      <a href="#blog">Blog</a>
-      <a href="#order" class="nav-cta">Đặt bánh</a>
+      <a href="index.html" class="active">Trang chủ</a>
+      <a href="about.html">Về mình</a>
+      <a href="menu.html">Menu</a>
+      <a href="blog.html">Blog</a>
+      <a href="order.html" class="nav-cta">Đặt bánh</a>
     </nav>
     <button class="menu-toggle">MENU</button>
   </div>
 </header>
 
-<main id="top">
+<main>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
@@ -594,36 +35,20 @@
         <h1>Mỗi chiếc bánh<br>là một <em>câu chuyện</em><br>được kể bằng bột và đường.</h1>
         <p class="lead">Mình chia sẻ hành trình làm bánh — từ công thức cổ điển đến những trend đang hot mỗi tuần. Thích thì đọc, mê thì đặt luôn một chiếc cho mình.</p>
         <div class="hero-ctas">
-          <a href="#menu" class="btn btn-primary">Xem menu &amp; đặt bánh</a>
-          <a href="#blog" class="btn btn-ghost">Đọc blog</a>
+          <a href="menu.html" class="btn btn-primary">Xem menu &amp; đặt bánh</a>
+          <a href="blog.html" class="btn btn-ghost">Đọc blog</a>
         </div>
       </div>
       <div class="ticket">
-        <div class="ticket-head">
-          <span>PHIẾU ĐẶT BÁNH</span>
-          <span>#000128</span>
-        </div>
-        <div class="ticket-row">
-          <span>Basque Cheesecake</span>
-          <span class="tag">Trend</span>
-        </div>
-        <div class="ticket-row">
-          <span>Su kem nhân kem tươi</span>
-          <span class="tag">Signature</span>
-        </div>
-        <div class="ticket-row">
-          <span>Chocolate Dubai Bar</span>
-          <span class="tag">Mới</span>
-        </div>
-        <div class="ticket-total">
-          <span>Giao hôm nay</span>
-          <span>Đặt trước 24h</span>
-        </div>
+        <div class="ticket-head"><span>PHIẾU ĐẶT BÁNH</span><span>#000128</span></div>
+        <div class="ticket-row"><span>Basque Cheesecake</span><span class="tag">Trend</span></div>
+        <div class="ticket-row"><span>Su kem nhân kem tươi</span><span class="tag">Signature</span></div>
+        <div class="ticket-row"><span>Chocolate Dubai Bar</span><span class="tag">Mới</span></div>
+        <div class="ticket-total"><span>Giao hôm nay</span><span>Đặt trước 24h</span></div>
       </div>
     </div>
   </section>
 
-  <!-- TICKER -->
   <div class="ticker-outer">
     <div class="ticker-track">
       <span>ĐANG HOT TUẦN NÀY <em>—</em> Basque Cheesecake cháy mặt</span>
@@ -637,161 +62,67 @@
     </div>
   </div>
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="wrap about-grid">
-      <div class="portrait"></div>
-      <div class="about-copy">
-        <span class="eyebrow">Người đứng bếp</span>
-        <h2>Xin chào, mình là Naiiiiiii</h2>
-        <p>Mình bắt đầu làm bánh vì mê cái cảm giác biến vài nguyên liệu đơn giản thành thứ khiến ai đó mỉm cười. Từ bánh kem sinh nhật đến su kem nhân kem tươi, mỗi công thức đều được thử đi thử lại đến khi vừa ý mới thôi.</p>
-        <p>Ở đây mình vừa chia sẻ hành trình học làm bánh, vừa nhận đặt bánh cho những dịp đặc biệt của bạn.</p>
-        <div class="stat-row">
-          <div class="stat"><b>5+</b><span>Năm làm bánh</span></div>
-          <div class="stat"><b>1000+</b><span>Đơn đã giao</span></div>
-          <div class="stat"><b>15</b><span>Công thức signature</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TREND / MENU -->
-  <section id="trend">
+  <section id="menu-preview">
     <div class="wrap">
       <div class="section-head">
-        <div>
-          <span class="eyebrow">Menu</span>
-          <h2 id="menu">Đặt bánh theo tuần</h2>
-        </div>
-        <a href="#order" class="see-more">Xem toàn bộ menu →</a>
+        <div><span class="eyebrow">Menu</span><h2>Đặt bánh theo tuần</h2></div>
+        <a href="menu.html" class="see-more">Xem toàn bộ menu →</a>
       </div>
-      <div class="menu-grid">
-        <div class="item-card">
-          <div class="item-media" data-label="ẢNH SẢN PHẨM" style="background:linear-gradient(160deg,#8BA878,#6E2A3A);"></div>
-          <div class="item-body">
-            <span class="k">Trend tuần này</span>
-            <h4>Basque Cheesecake</h4>
-            <p>Mặt bánh cháy caramel, ruột kem béo mịn.</p>
-            <div class="item-price"><span>185.000₫</span><a href="#order">Đặt ngay →</a></div>
-          </div>
-        </div>
-        <div class="item-card">
-          <div class="item-media" data-label="ẢNH SẢN PHẨM" style="background:linear-gradient(160deg,#C9974C,#6E2A3A);"></div>
-          <div class="item-body">
-            <span class="k">Signature</span>
-            <h4>Su kem nhân kem tươi</h4>
-            <p>Vỏ su giòn xốp, nhân kem tươi Pháp.</p>
-            <div class="item-price"><span>35.000₫ / cái</span><a href="#order">Đặt ngay →</a></div>
-          </div>
-        </div>
-        <div class="item-card">
-          <div class="item-media" data-label="ẢNH SẢN PHẨM" style="background:linear-gradient(160deg,#6E2A3A,#2B211D);"></div>
-          <div class="item-body">
-            <span class="k">Mới</span>
-            <h4>Chocolate Dubai Bar</h4>
-            <p>Chocolate nhân kataifi pistachio giòn tan.</p>
-            <div class="item-price"><span>65.000₫</span><a href="#order">Đặt ngay →</a></div>
-          </div>
-        </div>
-        <div class="item-card">
-          <div class="item-media" data-label="ẢNH SẢN PHẨM" style="background:linear-gradient(160deg,#8BA878,#C9974C);"></div>
-          <div class="item-body">
-            <span class="k">Đặt trước</span>
-            <h4>Bánh kem sinh nhật</h4>
-            <p>Thiết kế theo yêu cầu, đặt trước 48h.</p>
-            <div class="item-price"><span>Từ 350.000₫</span><a href="#order">Đặt ngay →</a></div>
-          </div>
-        </div>
+      <div class="menu-grid" id="home-menu-grid">
+        <p class="loading-note">Đang tải menu…</p>
       </div>
     </div>
   </section>
 
-  <!-- BLOG -->
-  <section id="blog" style="background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <section class="band-soft" id="blog-preview">
     <div class="wrap">
       <div class="section-head">
-        <div>
-          <span class="eyebrow">Blog</span>
-          <h2>Chuyện làm bánh</h2>
-        </div>
-        <a href="#" class="see-more">Xem tất cả bài viết →</a>
+        <div><span class="eyebrow">Blog</span><h2>Chuyện làm bánh</h2></div>
+        <a href="blog.html" class="see-more">Xem tất cả bài viết →</a>
       </div>
-      <div class="blog-grid">
-        <article class="post-card featured">
-          <div class="post-media" data-label="ẢNH BÀI VIẾT" style="background:linear-gradient(155deg,#6E2A3A,#C9974C);"></div>
-          <div class="post-body">
-            <span class="post-date">Bài mới nhất</span>
-            <h3>Mình đã học làm Basque Cheesecake như thế nào</h3>
-            <p>Ba lần cháy mặt bánh, hai lần sập ruột — và cuối cùng là công thức mình dùng mỗi tuần.</p>
-            <span class="read">Đọc tiếp →</span>
-          </div>
-        </article>
-        <article class="post-card">
-          <div class="post-media" data-label="ẢNH BÀI VIẾT" style="background:linear-gradient(155deg,#8BA878,#2B211D);"></div>
-          <div class="post-body">
-            <span class="post-date">Kiến thức</span>
-            <h3>Vì sao vỏ su kem hay bị xẹp?</h3>
-            <p>3 lỗi phổ biến nhất khi làm bánh su.</p>
-            <span class="read">Đọc tiếp →</span>
-          </div>
-        </article>
-        <article class="post-card">
-          <div class="post-media" data-label="ẢNH BÀI VIẾT" style="background:linear-gradient(155deg,#C9974C,#6E2A3A);"></div>
-          <div class="post-body">
-            <span class="post-date">Trend</span>
-            <h3>Thử làm Chocolate Dubai Bar tại nhà</h3>
-            <p>Trend viral từ Dubai — liệu có đáng công sức?</p>
-            <span class="read">Đọc tiếp →</span>
-          </div>
-        </article>
+      <div class="blog-grid" id="home-blog-grid">
+        <p class="loading-note">Đang tải bài viết…</p>
       </div>
     </div>
   </section>
 
-  <!-- GALLERY -->
   <section>
     <div class="wrap">
       <div class="section-head">
-        <div>
-          <span class="eyebrow">Hình ảnh</span>
-          <h2>Những chiếc bánh gần đây</h2>
-        </div>
+        <div><span class="eyebrow">Hình ảnh</span><h2>Những chiếc bánh gần đây</h2></div>
       </div>
       <div class="gallery-grid">
-        <div class="g-item" style="background:linear-gradient(160deg,#6E2A3A,#C9974C);"></div>
-        <div class="g-item" style="background:linear-gradient(160deg,#8BA878,#2B211D);"></div>
-        <div class="g-item" style="background:linear-gradient(160deg,#C9974C,#8BA878);"></div>
-        <div class="g-item" style="background:linear-gradient(160deg,#2B211D,#6E2A3A);"></div>
-        <div class="g-item" style="background:linear-gradient(160deg,#8BA878,#C9974C);"></div>
-        <div class="g-item" style="background:linear-gradient(160deg,#6E2A3A,#8BA878);"></div>
-        <div class="g-item" style="background:linear-gradient(160deg,#C9974C,#2B211D);"></div>
-        <div class="g-item" style="background:linear-gradient(160deg,#8BA878,#6E2A3A);"></div>
-        <div class="g-item" style="background:linear-gradient(160deg,#2B211D,#C9974C);"></div>
+        <div class="g-item" data-lightbox="https://placehold.co/1400x1400/6E2A3A/FBF6EF?text=Anh+1" data-label="Ảnh 1"><img src="https://placehold.co/500x500/6E2A3A/FBF6EF?text=1" alt="Ảnh bánh 1" loading="lazy"></div>
+        <div class="g-item" data-lightbox="https://placehold.co/1400x1400/8BA878/FBF6EF?text=Anh+2" data-label="Ảnh 2"><img src="https://placehold.co/500x500/8BA878/FBF6EF?text=2" alt="Ảnh bánh 2" loading="lazy"></div>
+        <div class="g-item" data-lightbox="https://placehold.co/1400x1400/C9974C/FBF6EF?text=Anh+3" data-label="Ảnh 3"><img src="https://placehold.co/500x500/C9974C/FBF6EF?text=3" alt="Ảnh bánh 3" loading="lazy"></div>
+        <div class="g-item" data-lightbox="https://placehold.co/1400x1400/2B211D/FBF6EF?text=Anh+4" data-label="Ảnh 4"><img src="https://placehold.co/500x500/2B211D/FBF6EF?text=4" alt="Ảnh bánh 4" loading="lazy"></div>
+        <div class="g-item" data-lightbox="https://placehold.co/1400x1400/8BA878/FBF6EF?text=Anh+5" data-label="Ảnh 5"><img src="https://placehold.co/500x500/8BA878/FBF6EF?text=5" alt="Ảnh bánh 5" loading="lazy"></div>
+        <div class="g-item" data-lightbox="https://placehold.co/1400x1400/6E2A3A/FBF6EF?text=Anh+6" data-label="Ảnh 6"><img src="https://placehold.co/500x500/6E2A3A/FBF6EF?text=6" alt="Ảnh bánh 6" loading="lazy"></div>
+        <div class="g-item" data-lightbox="https://placehold.co/1400x1400/C9974C/FBF6EF?text=Anh+7" data-label="Ảnh 7"><img src="https://placehold.co/500x500/C9974C/FBF6EF?text=7" alt="Ảnh bánh 7" loading="lazy"></div>
+        <div class="g-item" data-lightbox="https://placehold.co/1400x1400/8BA878/FBF6EF?text=Anh+8" data-label="Ảnh 8"><img src="https://placehold.co/500x500/8BA878/FBF6EF?text=8" alt="Ảnh bánh 8" loading="lazy"></div>
+        <div class="g-item" data-lightbox="https://placehold.co/1400x1400/2B211D/FBF6EF?text=Anh+9" data-label="Ảnh 9"><img src="https://placehold.co/500x500/2B211D/FBF6EF?text=9" alt="Ảnh bánh 9" loading="lazy"></div>
       </div>
     </div>
   </section>
 
-  <!-- ORDER -->
   <section id="order">
     <div class="wrap">
       <div class="order">
         <div>
           <span class="eyebrow">Đặt bánh</span>
           <h2>Đặt bánh trong 1 phút</h2>
-          <p>Điền form đặt bánh, mình sẽ xác nhận qua Zalo hoặc Messenger trong vòng 24h. Đặt trước ít nhất 48h cho bánh sinh nhật nhé.</p>
-          <div class="order-form-note">→ Khu vực này sẽ nhúng Google Form đặt hàng (xem hướng dẫn bước 5 bên dưới cuộc trò chuyện).</div>
+          <p>Điền form đặt bánh, mình sẽ xác nhận qua Zalo hoặc Messenger trong vòng 24h.</p>
+          <a href="order.html" class="btn btn-primary" style="background:var(--caramel); color:var(--ink);">Đi đến trang đặt bánh →</a>
         </div>
         <div class="order-channels">
-          <a href="#" class="channel"><span>Điền form đặt bánh</span><span class="arrow">→</span></a>
-          <a href="#" class="channel"><span>Nhắn Zalo</span><span class="arrow">→</span></a>
-          <a href="#" class="channel"><span>Nhắn Messenger</span><span class="arrow">→</span></a>
-          <a href="#" class="channel"><span>Gọi trực tiếp</span><span class="arrow">→</span></a>
+          <a href="order.html" class="channel"><span>Điền form đặt bánh</span><span class="arrow">→</span></a>
+          <a href="order.html" class="channel"><span>Nhắn Zalo</span><span class="arrow">→</span></a>
+          <a href="order.html" class="channel"><span>Nhắn Messenger</span><span class="arrow">→</span></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- NEWSLETTER -->
   <section class="newsletter">
     <div class="wrap">
       <h2>Nhận công thức mới mỗi tuần</h2>
@@ -809,14 +140,17 @@
   <div class="wrap footer-grid">
     <span class="logo" style="font-size:18px;">Ngọt<span>.</span></span>
     <div class="footer-links">
-      <a href="#">Facebook</a>
-      <a href="#">Instagram</a>
-      <a href="#">TikTok</a>
-      <a href="#">Zalo</a>
+      <a href="#">Facebook</a><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Zalo</a>
     </div>
-    <span class="footer-note">© 2026 — Bản nháp landing page, thay nội dung trước khi dùng chính thức</span>
+    <span class="footer-note">© 2026 — Bản nháp, thay nội dung trước khi dùng chính thức</span>
   </div>
 </footer>
 
+<script src="js/site-data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  renderMenu("home-menu-grid", 4);
+  renderBlog("home-blog-grid", 3);
+</script>
 </body>
 </html>

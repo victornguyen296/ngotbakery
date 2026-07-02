@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Ngọt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="logo">Ngọt<span>.</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Trang chủ</a>
+      <a href="about.html">Về mình</a>
+      <a href="menu.html">Menu</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="order.html" class="nav-cta">Đặt bánh</a>
+    </nav>
+    <button class="menu-toggle">MENU</button>
+  </div>
+</header>
+
+<main>
+  <section class="page-banner">
+    <div class="wrap">
+      <span class="eyebrow">Blog</span>
+      <h1>Chuyện làm bánh</h1>
+      <p>Bài viết được quản lý qua Google Sheet. Bấm vào một bài để đọc toàn bộ nội dung.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="blog-grid list-only" id="full-blog-grid">
+        <p class="loading-note">Đang tải bài viết…</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <span class="logo" style="font-size:18px;">Ngọt<span>.</span></span>
+    <div class="footer-links">
+      <a href="#">Facebook</a><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Zalo</a>
+    </div>
+    <span class="footer-note">© 2026 — Bản nháp, thay nội dung trước khi dùng chính thức</span>
+  </div>
+</footer>
+
+<script src="js/site-data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  renderBlog("full-blog-grid");
+</script>
+</body>
+</html>
