@@ -75,6 +75,7 @@ async function renderMenu(containerId, limit) {
   container.innerHTML = items.length
     ? items.map(menuCardHTML).join("")
     : `<p class="loading-note">Chưa có món nào trong menu.</p>`;
+  return items;
 }
 
 async function renderBlog(containerId, limit) {
