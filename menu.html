@@ -30,18 +30,14 @@
     <div class="wrap">
       <span class="eyebrow">Menu</span>
       <h1>Đặt bánh theo tuần</h1>
-      <p>hmm.....</p>
+      <p>hmm......</p>
     </div>
   </section>
 
   <section style="padding-top:0;">
     <div class="wrap">
       <div class="menu-filters" id="menu-filters">
-        <button class="active" data-filter="all">Tất cả</button>
-        <button data-filter="Trend">Trend</button>
-        <button data-filter="Signature">Signature</button>
-        <button data-filter="Mới">Mới</button>
-        <button data-filter="Đặt trước">Đặt trước</button>
+        <p class="loading-note">Đang tải bộ lọc…</p>
       </div>
       <div class="menu-grid" id="full-menu-grid">
         <p class="loading-note">Đang tải menu…</p>
@@ -56,15 +52,23 @@
     <div class="footer-links">
       <a href="#">Facebook</a><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Zalo</a>
     </div>
-    <span class="footer-note">© 2026 — Bản nháp, thay nội dung trước khi dùng chính thức</span>
+    <span class="footer-note">© 2026 — Bản nháp</span>
   </div>
 </footer>
 
 <script src="js/site-data.js"></script>
 <script src="js/main.js"></script>
 <script>
-  renderMenu("full-menu-grid").then(() => {
-    const filters = document.querySelectorAll("#menu-filters button");
+  renderMenu("full-menu-grid").then((items) => {
+    // Lấy danh sách category thật từ dữ liệu, không trùng lặp, giữ đúng thứ tự xuất hiện
+    const categories = [...new Set(items.map((i) => (i.category || "").trim()).filter(Boolean))];
+
+    const filterBar = document.getElementById("menu-filters");
+    filterBar.innerHTML =
+      `<button class="active" data-filter="all">Tất cả</button>` +
+      categories.map((c) => `<button data-filter="${c}">${c}</button>`).join("");
+
+    const filters = filterBar.querySelectorAll("button");
     filters.forEach((btn) => {
       btn.addEventListener("click", () => {
         filters.forEach((b) => b.classList.remove("active"));
