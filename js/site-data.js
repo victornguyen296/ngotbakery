@@ -23,7 +23,7 @@ const FALLBACK_BLOG = [
 ];
 
 async function fetchSheetData(type, extraQuery = "") {
-  if (!https://script.google.com/macros/s/AKfycbzc1YY8gZTqmWihCCKY86JsR5ySMqBwxuBygWp_BOgBCnLS42DSdwTnpX3Nzz4MjHAfvg/exec) return null;
+  if (!SITE_CONFIG.APPS_SCRIPT_URL) return null;
   try {
     const res = await fetch(`${SITE_CONFIG.APPS_SCRIPT_URL}?type=${type}${extraQuery}`);
     if (!res.ok) throw new Error("Network error " + res.status);
